@@ -4,4 +4,4 @@ It is a project where Database CRUD operations are performed using AngularJS and
 
 ##Images
 
-![Users Table](https://hizliresim.com/y6AXr9)
+![Users Table](<a href="https://hizliresim.com/y6AXr9"><img src="https://i.hizliresim.com/y6AXr9.png"></a>)

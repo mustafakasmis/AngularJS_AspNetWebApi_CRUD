@@ -1,0 +1,144 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Angular-Web Api CRUD</title>
+
+    <link href="w3.css" type="text/css" rel="stylesheet"/>
+    <script src="angular.min.js"></script>
+
+    <style>
+        #edituser, #adduser,#deleteuser {
+            display:none;
+        }
+        a{
+            text-decoration:none;
+        }
+    </style>
+
+</head>
+
+<body>
+
+
+    <div class="w3-container w3-teal w3-gray">
+       <a href="index.html"><h4 style="text-align:center;" class="w3-text-black">ANGULAR - WEB API CRUD OPERATIONS</h4></a>
+    </div>
+
+    <div><h1></h1></div>
+
+
+    <div class="w3-container">
+        <button class="w3-button w3-green w3-hover-blue w3-right" onclick="document.getElementById('adduser').style.display='block'">ADD NEW USER</button>
+    </div>
+
+
+    <div><h1></h1></div>
+
+
+    <div class="w3-container w3-light-blue">
+
+        <div class="w3-text-indigo">
+            <h4 style="text-align:center;">USERS TABLE</h4>
+        </div>
+
+        <div ng-app="myApp" ng-controller="myCtr">
+
+            <table class="w3-table w3-bordered w3-centered">
+                <tr>
+                    <th>ID</th>
+                    <th>NAME</th>
+                    <th>SURNAME</th>
+                    <th>EDIT</th>
+                    <th>DELETE</th>
+                </tr>
+
+                <tr ng-repeat="x in users">
+
+                    <td ng-model="dataId">{{x.id}}</td>
+                    <td ng-model="dataName">{{x.name}}</td>
+                    <td ng-model="dataSurname">{{x.surname}}</td>
+                    <td><button type="button" class="w3-button w3-green" ng-click="editUserData(x)">EDİT</button></td>
+                    <td><button type="button" class="w3-button w3-red" ng-click="deleteUserData(x)">DELETE</button></td>
+
+                </tr>
+            </table>
+
+
+            <div id="edituser" class="w3-modal">
+
+                <div class="w3-modal-content">
+                    <header class="w3-container w3-orange">
+                        <span onclick="document.getElementById('edituser').style.display='none'"
+                              class="w3-button w3-display-topright">&times;</span>
+                        <h3>EDIT USER</h3>
+                    </header>
+                    <div><h1></h1></div>
+                    <div class="w3-container">
+                        <input type="text" class="w3-input" ng-model="editingDataName" placeholder="NAME" /><br />
+                        <input type="text" class="w3-input" ng-model="editingDataSurname" placeholder="SURNAME" />
+                    </div>
+                    <div><h1></h1></div>
+                    <footer class="w3-container w3-teal">
+                        <button type="button" class="w3-button w3-green w3-centered" ng-click="saveEditData(editingDataName,editingDataSurname)">SAVE CHANGES</button>
+                    </footer>
+                </div>
+
+            </div>
+
+
+            <div id="adduser" class="w3-modal">
+
+                <div class="w3-modal-content">
+                    <header class="w3-container w3-orange">
+                        <span onclick="document.getElementById('adduser').style.display='none'"
+                              class="w3-button w3-display-topright">&times;</span>
+                        <h2>ADD USER</h2>
+                    </header>
+                    <div><h1></h1></div>
+                    <div class="w3-container">
+                        <input type="text" class="w3-input" ng-model="newUserName" placeholder="NAME" /><br />
+                        <input type="text" class="w3-input" ng-model="newUserSurname" placeholder="SURNAME" /><br />
+                    </div>
+                    <div><h1></h1></div>
+                    <footer class="w3-container w3-teal">
+                        <button type="button" class="w3-button w3-green w3-center" ng-click="addNewUser(newUserName,newUserSurname)">ADD</button>
+                    </footer>
+                </div>
+
+            </div>
+
+
+            <div id="deleteuser" class="w3-modal">
+
+                <div class="w3-modal-content">
+                    <header class="w3-container w3-orange">
+                        <h2>DELETE USER</h2>
+                    </header>
+                    <div><h1></h1></div>
+                    <div class="w3-container">
+                        <input disabled type="text" class="w3-input" ng-model="deleteUserName" placeholder="NAME" /><br />
+                        <input disabled type="text" class="w3-input" ng-model="deleteUserSurname" placeholder="SURNAME" /><br />
+                    </div>
+                    <div><h1></h1></div>
+                    <footer class="w3-container w3-teal">
+                        <button type="button" class="w3-button w3-green w3-center" ng-click="deleteUser()">YES</button>
+                        <button type="button" class="w3-button w3-green w3-center" ng-click="deleteUserCancel()">NO</button>
+                    </footer>
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <script src="angularOperations.js"></script>
+
+
+    </div>
+
+</body>
+
+</html>
